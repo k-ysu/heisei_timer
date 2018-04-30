@@ -38,7 +38,8 @@ api = tweepy.API(auth)
 
 # End of Heisei
 end_date = date(2019, 5, 1)
-today = today = date.today()
+today = date.today()
+#today = date(2018, 8, 15)
 time_to_end = abs(end_date - today)
 to_heisei = time_to_end.days
 
