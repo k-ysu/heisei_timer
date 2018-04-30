@@ -1,5 +1,6 @@
 import tweepy, time, sys
 import random
+from datetime import date
 
 #argfile = str(sys.argv[1])
 
@@ -14,8 +15,26 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 
 
+# End of Heisei
+end_date = date(2019, 4, 30)
+today = today = date.today()
+time_to_end = abs(end_date - today)
+to_heisei = time_to_end.days
+#to_heisei = 320
+
+#Progress
+
+progress = round ( (365-to_heisei) / 365 * 100)
+number_of_thin = round( 24 * to_heisei / 365 )
+number_of_thick = 24 - number_of_thin
+progress_bar = "▓" * number_of_thick
+progress_bar += "░" * number_of_thin
 
 
+tweet = "今日は平成最後の{}月{}日です \n".format(today.month, today.day)
+tweet += "平成はあと" + str( time_to_end.days ) + "日です! \n"
+
+tweet += "{} {}%".format(progress_bar, progress)
 
 #filename=open(argfile,'r')
 #f=filename.readlines()
@@ -24,7 +43,7 @@ api = tweepy.API(auth)
 #lines = open(argfile,'r').read().splitlines()
 #myline =random.choice(lines)
 #tweet = myline + "  " + random.choice(tags)+ "  " + random.choice(tags)
-tweet = 'This is Test ' + str( random.randint(1, 100) )
+#tweet = 'This is Test ▓░' + str( random.randint(1, 100) )
 print(tweet)
 api.update_status(tweet)
 
