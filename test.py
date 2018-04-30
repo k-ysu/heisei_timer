@@ -61,8 +61,8 @@ else:
 
 tweet = special_comment
 tweet += "平成はあと" + str( time_to_end.days ) + "日です! \n"
-
 tweet += "{} {}%".format(progress_bar, progress)
+tweet = tweet.encode('utf-8')
 
 #filename=open(argfile,'r')
 #f=filename.readlines()
