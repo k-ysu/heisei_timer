@@ -53,15 +53,18 @@ progress_bar += "░" * number_of_thin
 #specific_comment
 key = "%04d%02d%02d" % ( today.year, today.month, today.day)
 special_comment = ""
+special_tag=""
 if ( key in specific_comment ):
-    special_comment += "今日は平成最後の{}月{}日({})です。\n".format(today.month, today.day , specific_comment[key])
+    special_comment += "今日は #平成最後の {}月{}日({})です。\n".format(today.month, today.day , specific_comment[key])
+    special_tag = " #{} ".format(specific_comment[key])
 else:
-    special_comment += "今日は平成最後の{}月{}日です。\n".format(today.month, today.day)
+    special_comment += "今日は #平成最後の {}月{}日です。\n".format(today.month, today.day)
 
 
 tweet = special_comment
 tweet += "平成はあと" + str( time_to_end.days ) + "日です! \n"
-tweet += "{} {}%".format(progress_bar, progress)
+tweet += "{} {}% \n".format(progress_bar, progress)
+tweet += special_tag
 tweet = tweet.encode('utf-8')
 
 #filename=open(argfile,'r')
